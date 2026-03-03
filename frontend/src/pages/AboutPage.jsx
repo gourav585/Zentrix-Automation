@@ -132,6 +132,8 @@ function AboutPage() {
                   <img
                     src={member.image}
                     alt={`${member.name} profile`}
+                    loading='lazy'
+                    decoding='async'
                     className='h-20 w-20 rounded-full border border-zen-neonBlue/35 object-cover shadow-neon sm:h-24 sm:w-24'
                   />
 

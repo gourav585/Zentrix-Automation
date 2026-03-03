@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import SectionReveal from '../components/SectionReveal'
+import { getApiBaseUrl } from '../config/api'
 
 const initialValues = {
   fullName: '',
@@ -66,7 +67,7 @@ function ContactPage() {
     setErrors(nextErrors)
     if (Object.keys(nextErrors).length > 0) return
 
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'
+    const apiBase = getApiBaseUrl()
 
     try {
       setIsSubmitting(true)

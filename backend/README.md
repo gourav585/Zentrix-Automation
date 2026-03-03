@@ -33,6 +33,7 @@ src/
 2. Fill:
    - `MONGODB_URI` with real password (no `<db_password>`)
    - `ADMIN_KEY` with your own key
+   - `CORS_ORIGIN` (comma-separated origins in production)
 3. Run:
 
 ```bash
@@ -45,3 +46,8 @@ npm run dev
 - `GET /api/health`
 - `POST /api/contact`
 - `GET /api/admin/requests` (requires `x-admin-key` if `ADMIN_KEY` is set)
+
+## Render Notes
+
+- `CORS_ORIGIN` should be your frontend URL (example: `https://zentrix-frontend.onrender.com`).
+- Multiple origins are supported with comma-separated values.

@@ -19,4 +19,5 @@ export const env = {
   port: Number(clean(process.env.PORT) || 5000),
   mongodbUri: mongoUri,
   adminKey: clean(process.env.ADMIN_KEY) || '',
+  corsOrigin: clean(process.env.CORS_ORIGIN),
 }

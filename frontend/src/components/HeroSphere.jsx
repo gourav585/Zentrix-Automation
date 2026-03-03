@@ -14,6 +14,7 @@ function NeonSphere() {
   const hoverTargetRef = useRef(0)
   const hoverAmountRef = useRef(0)
   const pointerRef = useRef({ x: 0, y: 0 })
+  const normalFrameRef = useRef(0)
 
   useEffect(() => {
     if (!geometryRef.current) return
@@ -73,7 +74,10 @@ function NeonSphere() {
     }
 
     positionAttr.needsUpdate = true
-    geometry.computeVertexNormals()
+    normalFrameRef.current = (normalFrameRef.current + 1) % 3
+    if (normalFrameRef.current === 0) {
+      geometry.computeVertexNormals()
+    }
 
     const pulse = 1 + Math.sin(time * 1.8) * 0.015 + hoverAmountRef.current * 0.045
     sphereRef.current.scale.set(pulse, pulse, pulse)
@@ -101,7 +105,7 @@ function NeonSphere() {
         pointerRef.current.y = event.uv?.y ?? 0
       }}
     >
-      <sphereGeometry ref={geometryRef} args={[1, 96, 96]} />
+      <sphereGeometry ref={geometryRef} args={[1, 72, 72]} />
       <meshPhysicalMaterial
         ref={materialRef}
         color='#5ee8ff'
@@ -158,12 +162,12 @@ function HeroSphere() {
           </p>
 
           <div className='flex flex-col gap-3 sm:flex-row sm:flex-wrap'>
-            <a
-              href='/contact'
+            <Link
+              to='/contact'
               className='rounded-xl border border-zen-neonMint/65 bg-gradient-to-r from-zen-neonBlue/35 via-zen-neonPurple/35 to-zen-neonMint/35 px-4 py-3 text-center text-[11px] font-semibold uppercase tracking-[0.14em] text-zen-neonMint shadow-neon-mint transition hover:animate-glow-pulse sm:w-auto sm:px-5 sm:text-xs sm:tracking-[0.16em]'
             >
               Book Free AI Demo
-            </a>
+            </Link>
             <Link
               to='/services'
               className='rounded-xl border border-zen-neonBlue/55 bg-transparent px-4 py-3 text-center text-[11px] font-semibold uppercase tracking-[0.14em] text-zen-neonBlue transition hover:border-zen-neonPurple/55 hover:text-zen-neonPurple sm:w-auto sm:px-5 sm:text-xs sm:tracking-[0.16em]'
@@ -193,7 +197,7 @@ function HeroSphere() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: 'easeOut' }}
         >
-          <Canvas camera={{ position: [0, 0, 3.5], fov: 50 }}>
+          <Canvas camera={{ position: [0, 0, 3.5], fov: 50 }} dpr={[1, 1.5]} gl={{ powerPreference: 'high-performance' }}>
             <color attach='background' args={['#050816']} />
             <ambientLight intensity={0.34} color='#8ab4ff' />
             <pointLight position={[2.2, 2.4, 2.2]} intensity={28} color='#67e8f9' distance={9} />

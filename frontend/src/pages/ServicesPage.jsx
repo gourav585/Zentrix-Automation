@@ -112,12 +112,12 @@ function ServicesPage() {
               <p className='mt-1 text-sm text-zen-text/75'>Get a live walkthrough of your AI automation roadmap.</p>
             </div>
             <div className='flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap'>
-              <a
-                href='/contact'
+              <Link
+                to='/contact'
                 className='rounded-xl border border-zen-neonMint/65 bg-gradient-to-r from-zen-neonBlue/35 via-zen-neonPurple/35 to-zen-neonMint/35 px-5 py-3 text-center text-xs font-semibold uppercase tracking-[0.16em] text-zen-neonMint shadow-neon-mint transition hover:animate-glow-pulse'
               >
                 Book Free AI Demo
-              </a>
+              </Link>
               <Link
                 to='/about'
                 className='rounded-xl border border-zen-neonBlue/55 bg-transparent px-5 py-3 text-center text-xs font-semibold uppercase tracking-[0.16em] text-zen-neonBlue transition hover:border-zen-neonPurple/55 hover:text-zen-neonPurple'

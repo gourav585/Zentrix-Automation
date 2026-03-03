@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import SectionReveal from '../components/SectionReveal'
+import { getApiBaseUrl } from '../config/api'
 
 function formatDate(value) {
   if (!value) return '-'
@@ -15,7 +16,7 @@ function AdminPage() {
   const [error, setError] = useState('')
   const [deletingId, setDeletingId] = useState('')
 
-  const apiBase = useMemo(() => import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000', [])
+  const apiBase = useMemo(() => getApiBaseUrl(), [])
 
   const fetchRequests = async () => {
     try {
